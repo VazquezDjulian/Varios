@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1528857003 source:c:\users\julian\desktop\vazquez_diegojulian_1a v2\abm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"abm.h"
+	"listados.h"
+
+1528407607 c:\users\julian\desktop\vazquez_diegojulian_1a v2\abm.h
+
+1528854798 c:\users\julian\desktop\vazquez_diegojulian_1a v2\listados.h
+
+1528857984 source:c:\users\julian\desktop\vazquez_diegojulian_1a v2\listados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"abm.h"
+	"listados.h"
+
+1528856348 source:c:\users\julian\desktop\vazquez_diegojulian_1a v2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"abm.h"
+	"listados.h"
+
