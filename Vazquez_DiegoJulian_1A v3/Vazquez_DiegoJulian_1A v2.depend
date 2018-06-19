@@ -27,3 +27,31 @@
 	"abm.h"
 	"listados.h"
 
+1529192321 source:c:\users\julian\desktop\vazquez_diegojulian_1a v3\abm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"abm.h"
+	"listados.h"
+
+1528869403 c:\users\julian\desktop\vazquez_diegojulian_1a v3\abm.h
+
+1528871171 c:\users\julian\desktop\vazquez_diegojulian_1a v3\listados.h
+
+1529189452 source:c:\users\julian\desktop\vazquez_diegojulian_1a v3\listados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"abm.h"
+	"listados.h"
+
+1528860901 source:c:\users\julian\desktop\vazquez_diegojulian_1a v3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"abm.h"
+	"listados.h"
+

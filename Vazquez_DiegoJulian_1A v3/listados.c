@@ -39,9 +39,9 @@ void informeDeImportes(eProductos vec[],int tam)
 
     acumuladorTotal = sumaImportes(vec,tam);
     contadorPromedio = contador(vec,tam);
-    printf("El total la compra es: %.2f\n\n",acumuladorTotal);
+    printf("\nEl total la compra es: %.2f\n\n",acumuladorTotal);
     promedio = promedioImportes(vec,tam);
-    printf("El promedio de los productos es: %.2f\n\n",promedio);
+    printf("\nEl promedio de los productos es: %.2f\n\n",promedio);
 
     for(i=0; i<tam; i++)
     {
@@ -201,6 +201,8 @@ void Informes(eProductos vec[],eProveedor prov[],int tampp, int tampv)
 
             case 'X':
                 seguir = 0;
+                system("pause");
+                system("cls");
                 break;
 
         }
@@ -223,7 +225,7 @@ void menuInformes()
     printf("J. El proveedor que provee MENOS productos, mostrando los productos\n");
     printf("K. El proveedor que provee el producto mas CARO, mostrando ese producto\n");
     printf("L. El proveedor que provee el producto mas BARATO, mostrando ese producto\n");
-    printf("0. SALIR\n");
+    printf("\nX. SALIR\n");
 }
 
 void ordenamientosPuntoA(eProductos vec[],eProveedor prov[],int tam)
@@ -372,25 +374,27 @@ void mostrarProductosXproveedor(eProductos vec[],eProveedor prov[],int tampp, in
     int proveedor;
     int i;
     int j;
+    system("cls");
     MostrarProveedor(prov,tampv);
-    printf("Ingrese el numero de proveedor:  ");
+    printf("\nIngrese el numero de proveedor:  ");
     scanf("%d",&proveedor);
     printf("\n");
 
     for(i=0;i<tampv;i++)
     {
-        for(j=0;j<tampp;j++)
+        if(prov[i].codigo == proveedor)
         {
-            if(vec[i].isEmpty == 0)
+            //MOSTRAR DATOS DEL PROVEEDOR
+            for(j=0;j<tampp;j++)
             {
-                 if(prov[i].codigo == proveedor)
-                 {
-                     if(prov[i].codigo == vec[j].proveedor)
+                if(vec[j].isEmpty == 0)
+                {
+                    if(prov[i].codigo == vec[j].proveedor)
                     {
-                    //printf("%d\t %s\t\t\t %.2f\t\t %d\t %s\n",vec[j].codigoP,vec[j].descripcionP,vec[j].importe,vec[j].cantidad,prov[i].descripcion);
-                        mostarUnProducto(vec,prov,i);
+                        //MOSTRAR DATOS DEL PRODUCTO
+                        mostarUnProducto(vec,prov,j);
                     }
-                 }
+                }
             }
         }
     }
@@ -430,7 +434,8 @@ void productosSuperiorPromedio(eProductos vec[], eProveedor prov[], int tam)
 {
     int i;
     float promedio;
-    printf("PRODUCTOS CUYO PRECIO ES SUPERIOR AL PROMEDIO: \n");
+    system("cls");
+    printf("\nPRODUCTOS CUYO PRECIO ES SUPERIOR AL PROMEDIO: \n");
 
     promedio = promedioImportes(vec,tam);
 
@@ -451,7 +456,8 @@ void productosInferiorPromedio(eProductos vec[], eProveedor prov[], int tam)
 {
     int i;
     float promedio;
-    printf("PRODUCTOS CUYO PRECIO ES INFERIOR AL PROMEDIO: \n");
+    system("cls");
+    printf("\nPRODUCTOS CUYO PRECIO ES INFERIOR AL PROMEDIO: \n");
 
     promedio = promedioImportes(vec,tam);
 
@@ -477,7 +483,7 @@ int buscarMayor(eProductos vec[], int tam)
     int index;
 
     max = vec[0].importe;
-
+    index = 0;
     for(i=0; i<tam; i++)
     {
         if(vec[i].isEmpty == 0)
@@ -500,7 +506,7 @@ int buscarMenor(eProductos vec[], int tam)
     int index;
 
     min = vec[0].importe;
-
+    index = 0;
     for(i=0; i<tam; i++)
     {
         if(vec[i].isEmpty == 0)
@@ -520,8 +526,8 @@ void productoMasCaro(eProductos vec[],eProveedor prov[], int tampp, int tampv)
     int i;
     int index;
     float importeMax;
-    int prove;
-    printf("PRODUCTO MAS CARO: \n");
+    system("cls");
+    printf("\nPRODUCTO MAS CARO: \n");
 
     index = buscarMayor(vec,tampp);
 
@@ -529,9 +535,9 @@ void productoMasCaro(eProductos vec[],eProveedor prov[], int tampp, int tampv)
     {
         if(vec[index].proveedor == prov[i].codigo)
         {
-            printf("EL MAYOR IMPORTE: %.2f\n",vec[index].importe);
+            printf("EL MAYOR IMPORTE: %.2f\n\n",vec[index].importe);
             printf("Proveedor: %s\n",prov[i].descripcion);
-            printf("%d\t %s\t\t\t %.2f\t\t %d\t %s\n",vec[index].codigoP,vec[index].descripcionP,vec[index].importe,vec[index].cantidad,prov[prove].descripcion);
+            printf("%d\t %s\t\t\t %.2f\t\t %d\t %s\n",vec[index].codigoP,vec[index].descripcionP,vec[index].importe,vec[index].cantidad,prov[i].descripcion);
 
         }
     }
@@ -542,7 +548,6 @@ void productoMasBarato(eProductos vec[],eProveedor prov[], int tampp, int tampv)
     int i;
     int index;
     float importeMin;
-    int prove;
     system("cls");
     printf("PRODUCTO MAS BARATO: \n");
 
@@ -552,10 +557,9 @@ void productoMasBarato(eProductos vec[],eProveedor prov[], int tampp, int tampv)
     {
         if(vec[index].proveedor == prov[i].codigo)
         {
-
-            printf("EL MENOR IMPORTE: %.2f\n",vec[index].importe);
-            printf("Proveedor: %s",prov[i].descripcion);
-            printf("%4d %15s %8.2f %4d %10s\n",vec[index].codigoP,vec[index].descripcionP,vec[index].importe,vec[index].cantidad,prov[prove].descripcion);
+            printf("\nEL MENOR IMPORTE: %.2f\n",vec[index].importe);
+            printf("PROVEEDOR: %s",prov[i].descripcion);
+            printf("\nCod: %4d %15s %8.2f %4d u. %10s\n",vec[index].codigoP,vec[index].descripcionP,vec[index].importe,vec[index].cantidad,prov[i].descripcion);
         }
     }
 
@@ -566,23 +570,23 @@ void productosDeProveedores(eProductos vec[], eProveedor prov[], int tampp, int 
     int i;
     int j;
     system("cls");
-    printf("PRODUCTOS POR PROVEEDOR \n");
+    printf("\nPRODUCTOS POR PROVEEDOR \n");
 
     for(i=0; i<tampv; i++)
     {
         if(prov[i].isEmpty == 0)
         {
-            printf("%s : \n", prov[i].descripcion);
+            printf("\n %s : \n", prov[i].descripcion);
         }
 
-        for(j=0; i<tampp; j ++)
+        for(j=0; j<tampp; j ++)
         {
             if(vec[j].isEmpty == 0)
             {
                 if(prov[i].codigo == vec[j].proveedor)
                 {
                     //soloProductos(vec,tampp,j);
-                    printf("%4d %15s %8.2f %4d\n",vec[j].codigoP,vec[j].descripcionP,vec[j].importe,vec[j].cantidad);
+                    printf("Codigo : %4d %15s %8.2f %4d unidades\n",vec[j].codigoP,vec[j].descripcionP,vec[j].importe,vec[j].cantidad);
                 }
             }
         }
@@ -601,15 +605,19 @@ void proveedorMayor(eProductos vec[],eProveedor prov[], int tampp, int tampv)
     int provMax =0;
     int i;
     int j;
-     printf("PROVEEDOR CON MAYOR CANTIDAD DE PRODUCTOS \n");
+    system("cls");
+    printf("\nPROVEEDOR CON MAYOR CANTIDAD DE PRODUCTOS \n");
 
     for(i=0; i<tampv; i++)
     {
         for(j=0; j<tampp; j++)
         {
-            if(prov[i].codigo == vec[j].proveedor)
+            if(vec[j].isEmpty == 0)
             {
-                cant = vec[j].cantidad + cant;
+                if(prov[i].codigo == vec[j].proveedor)
+                {
+                    cant = vec[j].cantidad + cant;
+                }
             }
         }
 
@@ -618,9 +626,11 @@ void proveedorMayor(eProductos vec[],eProveedor prov[], int tampp, int tampv)
             max = cant;
             provMax = i;
         }
+
+        cant = 0;
     }
     //soloProveedores(prov,provMax);
-    printf("Proveedor: %s",prov[provMax].descripcion);
+    printf("PROVEEDOR: %s \n",prov[provMax].descripcion);
 }
 
 void proveedorMenor(eProductos vec[],eProveedor prov[], int tampp, int tampv)
@@ -630,7 +640,9 @@ void proveedorMenor(eProductos vec[],eProveedor prov[], int tampp, int tampv)
     int provMin =0;
     int i;
     int j;
-    printf("PROVEEDOR CON MENOR CANTIDAD DE PRODUCTOS \n");
+
+    system("cls");
+    printf("\nPROVEEDOR CON MENOR CANTIDAD DE PRODUCTOS \n");
 
     min = vec[0].cantidad;
 
@@ -649,8 +661,9 @@ void proveedorMenor(eProductos vec[],eProveedor prov[], int tampp, int tampv)
             min = cant;
             provMin = i;
         }
+        cant = 0;
     }
-    printf("Proveedor: %s",prov[provMin].descripcion);
+    printf("\nPROVEEDOR:\n %s\n",prov[provMin].descripcion);
 }
 
 void soloProveedores(eProveedor prov[],int tampv,int index)
@@ -666,7 +679,8 @@ void proveedorMenorDiez(eProductos vec[], eProveedor prov[], int tampp, int tamp
     int i;
     int j;
     int cant = 0;
-    printf("PROVEEDORES CON MENOS DE 10 PRODUCTOS \n");
+    system("cls");
+    printf("\nPROVEEDORES CON MENOS DE 10 PRODUCTOS \n");
 
     for(i=0; i<tampv;i++)
     {
@@ -679,8 +693,8 @@ void proveedorMenorDiez(eProductos vec[], eProveedor prov[], int tampp, int tamp
         }
         if(cant<=10)
         {
-            printf("Proveedor: %s",prov[i].descripcion);
+            printf("PROVEEDOR:%s \n\n ",prov[i].descripcion);
         }
     }
-    cant = 10;
+    cant = 0;
 }

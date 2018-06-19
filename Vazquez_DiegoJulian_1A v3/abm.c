@@ -249,8 +249,18 @@ void Baja(eProductos vec[],eProveedor prov[], int tam)
 
 void mostarUnProducto(eProductos vec[],eProveedor prov[],int pos)
 {
+     int i;
+     int posP;
+     for(i=0; i<TAMPROV; i++)
+     {
+         if(vec[pos].proveedor == prov[i].codigo)
+         {
+             posP = i;
+         }
+     }
+
      printf("CODIGO\t DESCRIPCION\t PRECIO  CANTIDAD  PROVEEDOR\n");
-     printf("%4d %15s %8.2f %4d %10s\n",vec[pos].codigoP,vec[pos].descripcionP,vec[pos].importe,vec[pos].cantidad,prov[pos].descripcion);
+     printf("%4d %15s %8.2f %4d %10s\n",vec[pos].codigoP,vec[pos].descripcionP,vec[pos].importe,vec[pos].cantidad,prov[i].descripcion);
 }
 
 void Modificar(eProductos vec[], eProveedor prov[],int tamProducto, int tamProveedor)
